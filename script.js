@@ -1,23 +1,17 @@
-// ========================
-// BAGIAN YANG BISA KAMU GANTI
-// ========================
-
 const config = {
-  namaPacar: "Sayang",
+  namaPacar: "Depiii",
   namaKamu: "Xavier",
-  tanggalJadian: "3000"
+  tanggalJadian: "2026-04-12"
 };
 
-// Ganti tanggalJadian sesuai format: YYYY-MM-DD
-// Contoh: "2025-06-13"
 
 const loveMessages = [
-  "Kamu itu rumah paling nyaman setelah hari yang panjang.",
-  "Aku suka kamu bukan cuma karena cantik, tapi karena kamu bikin semuanya terasa lebih hidup.",
-  "Kalau aku punya satu kesempatan buat pilih lagi, aku tetap pilih kamu.",
-  "Terima kasih sudah jadi bagian paling manis dari hidup aku.",
-  "Kamu nggak perlu sempurna. Jadi diri kamu aja udah cukup bikin aku jatuh hati.",
-  "Aku mungkin nggak selalu pandai ngomong, tapi aku selalu serius soal kamu."
+  "Kamu itu rumah paling nyaman setelah hari yang panjang. (ciaelah kaya bang duloh gue)",
+  "Aku suka kamu bukan cuma karena cantik, tapi karena kamu bikin semuanya terasa lebih hidup.(zhang zuzur zhanggal)",
+  "Kalau aku punya satu kesempatan buat pilih lagi, aku tetap pilih kamu.(AWWWWWWWWW ROMANTIS BENER)",
+  "Terima kasih sudah jadi bagian paling manis dari hidup aku.(coklat kali)",
+  "Kamu nggak perlu sempurna. Jadi diri kamu aja udah cukup bikin aku jatuh hati.(aduh alaynya ak)",
+  "Aku mungkin nggak selalu pandai ngomong, tapi aku selalu serius soal kamu.(GAAAAAAARRRRRRRR)"
 ];
 
 // ========================
@@ -69,9 +63,18 @@ function updateLoveCounter() {
 
   const diff = now - startDate;
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor(diff / (1000 * 60 * 60));
-  const minutes = Math.floor(diff / (1000 * 60));
+  if (Number.isNaN(diff) || diff < 0) {
+    document.getElementById("daysTogether").textContent = "0";
+    document.getElementById("hoursTogether").textContent = "0";
+    document.getElementById("minutesTogether").textContent = "0";
+    return;
+  }
+
+  const totalMinutes = Math.floor(diff / (1000 * 60));
+
+  const days = Math.floor(totalMinutes / (60 * 24));
+  const hours = Math.floor((totalMinutes % (60 * 24)) / 60);
+  const minutes = totalMinutes % 60;
 
   document.getElementById("daysTogether").textContent = days;
   document.getElementById("hoursTogether").textContent = hours;
@@ -136,3 +139,97 @@ function createManyHearts() {
 }
 
 setInterval(createHeart, 900);
+
+// ========================
+// MUSIC PLAYER
+// ========================
+
+const songs = [
+  {
+    title: "Rocketeers",
+    file: "assets/music/lagu1far.mp3"
+  },
+  {
+    title: "Jadi Kekasihku Saja",
+    file: "assets/music/lagu2jadi.mp3"
+  },
+  {
+    title: "Besok Kita Pergi Makan",
+    file: "assets/music/lagu3sal.mp3"
+  }
+];
+
+let currentSongIndex = 0;
+let isPlaying = false;
+
+const loveAudio = document.getElementById("loveAudio");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const currentSongTitle = document.getElementById("currentSongTitle");
+const songSelect = document.getElementById("songSelect");
+const volumeSlider = document.getElementById("volumeSlider");
+const volumeText = document.getElementById("volumeText");
+
+function loadSong(index) {
+  loveAudio.src = songs[index].file;
+  currentSongTitle.textContent = "Sekarang diputar: " + songs[index].title;
+  songSelect.value = index;
+}
+
+function togglePlay() {
+  if (!isPlaying) {
+    loveAudio.play();
+    isPlaying = true;
+    playPauseBtn.textContent = "⏸";
+  } else {
+    loveAudio.pause();
+    isPlaying = false;
+    playPauseBtn.textContent = "▶";
+  }
+}
+
+function changeSong() {
+  currentSongIndex = parseInt(songSelect.value);
+  loadSong(currentSongIndex);
+
+  if (isPlaying) {
+    loveAudio.play();
+  }
+}
+
+function nextSong() {
+  currentSongIndex++;
+
+  if (currentSongIndex >= songs.length) {
+    currentSongIndex = 0;
+  }
+
+  loadSong(currentSongIndex);
+
+  if (isPlaying) {
+    loveAudio.play();
+  }
+}
+
+function previousSong() {
+  currentSongIndex--;
+
+  if (currentSongIndex < 0) {
+    currentSongIndex = songs.length - 1;
+  }
+
+  loadSong(currentSongIndex);
+
+  if (isPlaying) {
+    loveAudio.play();
+  }
+}
+
+function changeVolume() {
+  loveAudio.volume = volumeSlider.value;
+  volumeText.textContent = Math.round(volumeSlider.value * 100) + "%";
+}
+
+loveAudio.addEventListener("ended", nextSong);
+
+loadSong(currentSongIndex);
+loveAudio.volume = 0.5;
