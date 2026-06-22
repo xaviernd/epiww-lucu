@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Favorite Person</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <header class="navbar">
+    <div class="logo">Love<span>Page</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">Tentang Dia</a>
+      <a href="#memories">Memories</a>
+      <a href="#letter">Letter</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <p class="small-text">Website kecil untuk orang paling spesial</p>
+      <h1>Hai, <span id="herName">Sayang</span> 💗</h1>
+      <h2 id="typingText"></h2>
+      <p>
+        Aku bikin halaman kecil ini bukan karena aku jago romantis,
+        tapi karena kamu pantas dapat sesuatu yang dibuat dengan niat.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#letter" class="btn primary">Buka Pesan</a>
+        <button class="btn secondary" onclick="showRandomLove()">Random Love</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="assets/foto1.jpg" alt="Foto Pacar" />
+      <div class="card-caption">My favorite person.</div>
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <p class="section-label">Tentang Kamu</p>
+    <h2>Hal-hal kecil yang aku suka dari kamu</h2>
+
+    <div class="reason-grid">
+      <div class="reason-card">
+        <h3>01</h3>
+        <p>Kamu punya cara sendiri buat bikin hari biasa jadi terasa lebih ringan.</p>
+      </div>
+
+      <div class="reason-card">
+        <h3>02</h3>
+        <p>Senyum kamu itu bahaya. Sekali lihat, mood aku bisa langsung berubah.</p>
+      </div>
+
+      <div class="reason-card">
+        <h3>03</h3>
+        <p>Aku suka caramu hadir, bahkan dari hal-hal kecil yang mungkin kamu anggap biasa.</p>
+      </div>
+
+      <div class="reason-card">
+        <h3>04</h3>
+        <p>Kamu bukan cuma orang yang aku suka, tapi juga orang yang bikin aku ingin jadi lebih baik.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section counter-section">
+    <p class="section-label">Love Counter</p>
+    <h2>Kita sudah sejauh ini</h2>
+
+    <div class="counter-box">
+      <div>
+        <h3 id="daysTogether">0</h3>
+        <p>Hari</p>
+      </div>
+      <div>
+        <h3 id="hoursTogether">0</h3>
+        <p>Jam</p>
+      </div>
+      <div>
+        <h3 id="minutesTogether">0</h3>
+        <p>Menit</p>
+      </div>
+    </div>
+
+    <p class="counter-note">
+      Dan semoga ini baru awal dari banyak cerita yang belum kita tulis.
+    </p>
+  </section>
+
+  <section id="memories" class="section">
+    <p class="section-label">Our Memories</p>
+    <h2>Beberapa momen kecil</h2>
+
+    <div class="memory-grid">
+      <div class="memory-card">
+        <img src="assets/foto1.jpg" alt="Memory 1" />
+        <p>Hari di mana aku sadar, kamu beda.</p>
+      </div>
+
+      <div class="memory-card">
+        <img src="assets/foto2.jpg" alt="Memory 2" />
+        <p>Momen sederhana, tapi rasanya hangat banget.</p>
+      </div>
+
+      <div class="memory-card">
+        <img src="assets/foto3.jpg" alt="Memory 3" />
+        <p>Kalau bisa diulang, aku tetap pilih kamu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="letter" class="section letter-section">
+    <p class="section-label">Special Letter</p>
+    <h2>Pesan kecil buat kamu</h2>
+
+    <div class="letter-box">
+      <p>
+        Aku mungkin bukan orang yang paling sempurna, tapi aku selalu ingin belajar
+        jadi seseorang yang lebih baik buat kamu.
+      </p>
+      <p>
+        Terima kasih sudah hadir, sudah sabar, sudah bikin banyak hal terasa lebih indah.
+        Kalau suatu hari kamu capek, semoga halaman kecil ini bisa jadi pengingat
+        kalau ada seseorang yang benar-benar bersyukur punya kamu.
+      </p>
+      <p class="signature">
+        Dari aku,<br />
+        <span id="myName">orang yang sayang kamu</span>
+      </p>
+    </div>
+
+    <div class="question-box">
+      <h3>Kamu sayang aku juga kan? 😳</h3>
+      <div class="answer-buttons">
+        <button class="yes-btn" onclick="showFinalMessage()">Iya dong 💗</button>
+        <button class="no-btn" id="noButton">Enggak 😭</button>
+      </div>
+      <p id="finalMessage"></p>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <button onclick="closePopup()" class="close-btn">×</button>
+      <h3>Untuk kamu 💌</h3>
+      <p id="popupText"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>Dibuat dengan niat, sedikit kode, dan banyak rasa.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
